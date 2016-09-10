@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_create_group) {
-            
+
         } else if (id == R.id.nav_create_notification) {
 
         }
