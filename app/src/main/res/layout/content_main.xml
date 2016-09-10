@@ -6,12 +6,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior" tools:showIn="@layout/app_bar_main"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:layout_centerVertical="true"
-        android:src="@drawable/main_background"
-        android:id="@+id/main_background"/>
+
 
 </RelativeLayout>
