@@ -19,8 +19,8 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    ImageView mBackgroundImage;
-    int mScreenScaling=2;
+        ImageView mBackgroundImage;
+        int mBackgroundScaling=2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        
+
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         mBackgroundImage = (ImageView) findViewById(R.id.main_background);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         int imageWidth=mBackgroundImage.getMeasuredWidth();
         Picasso.with(this)
                 .load(R.drawable.main_background)
-                .resize(imageWidth/mScreenScaling, imageHeight/mScreenScaling)
+                .resize(imageWidth/mBackgroundScaling, imageHeight/mBackgroundScaling)
                 .centerCrop()
                 .into(mBackgroundImage);
 
