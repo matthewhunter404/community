@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    ImageView mBackgroundImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,17 +36,9 @@ public class MainActivity extends AppCompatActivity
         //Sets the background to an image using picasso. Image resizing etc takes place here automatically
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        ImageView backgroundImage = (ImageView) findViewById(R.id.main_background);
+        mBackgroundImage = (ImageView) findViewById(R.id.main_background);
         int displayWidth = displaymetrics.widthPixels;
         int displayHeight = displaymetrics.heightPixels;
-        int imageHeight=backgroundImage.getMeasuredHeight();
-        int imageWidth=backgroundImage.getMeasuredWidth();
-        Picasso.with(this)
-                .load(R.drawable.main_background)
-                .resize(500, 500)
-                .centerCrop()
-                .into(backgroundImage);
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -99,4 +91,17 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus){
+        int imageHeight=mBackgroundImage.getMeasuredHeight();
+        int imageWidth=mBackgroundImage.getMeasuredWidth();
+        Picasso.with(this)
+                .load(R.drawable.main_background)
+                .resize(imageWidth/2, imageHeight/2)
+                .centerCrop()
+                .into(mBackgroundImage);
+
+    }
+
 }
